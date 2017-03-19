@@ -1,0 +1,119 @@
+<html>
+
+ <head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  
+  <style>
+    body {
+    background:
+        -moz-radial-gradient(white 15%, transparent 16%),
+        -moz-radial-gradient(white 15%, transparent 16%),
+        black;
+    background:
+        -webkit-radial-gradient(white 15%, transparent 16%),
+        -webkit-radial-gradient(white 15%, transparent 16%),
+        black;
+    background-position: 0 0, 80px 80px;
+    
+    -webkit-background-size:160px 160px;
+    -moz-background-size:160px 160px;
+    background-size:160px 160px;
+}
+   <!-- body{ width:100%; height:100%; overflow:hidden; } -->
+   
+   .mole{ 
+     background-color:rgb(181, 230, 29);
+     border-radius:100px 100px 0px 0px;
+     height:100%;
+     width:10%;
+     position:absolute;
+     top:100%;
+     background-image:url(mole.png);
+     background-size:100%;
+     background-repeat:no-repeat;
+     background-position:0% 5%
+     }
+   .left_ear{
+     background-color:rgb(182, 122, 87);
+     border-radius:100px;
+     position:absolute;
+     float:left;
+     min-width:30%;
+     padding-top:30%;
+     z-index:-1;
+   }
+   .right_ear{
+     background-color:rgb(182, 122, 87);
+     border-radius:100px;
+     position:absolute;
+     float:right;
+     min-width:30%;
+     padding-top:30%;
+     left:70%;
+     z-index:-1;
+   }
+   #mole1 {left: 10%;}
+   #mole2 {left: 45%;}
+   #mole3 {left: 80%;}
+   
+   .score{font-family:arial; font-size:10vw; position:absolute; right:5%; z-index:-1; color: yellow}
+  </style>
+  
+  
+  <script>
+   
+   jQuery(document).ready(function(){
+   
+    var add =0;
+    
+    jQuery(".mole").animate({'top':'0%'}, 5000, function(){
+     jQuery('.mole').css('top','100%');
+     jQuery('.score').html('GAME OVER');
+     add= add-3;
+    });
+    
+    jQuery(".mole").hover(function(){
+         
+     jQuery(this).css('background-image','url(hurt.png)');
+     jQuery(this).stop().animate({'top':'100%'},1000, function(){
+          
+      add = add - (-1);
+      jQuery('.score').html('Score: ' + add);
+      jQuery(this).css('background-image','url(mole.png)');
+      jQuery(".mole").animate({'top':'0%'}, 5000, function(){
+       jQuery('.mole').css('top','100%');
+       jQuery('.score').html('GAME OVER');
+       add= add-3;
+      });
+     }); 
+    });
+   
+   });
+  
+  </script>
+
+
+ </head>
+
+ 
+ <body>
+  
+  <div class="score">Score: 0</div>
+ 
+  <div class="mole" id="mole1"> 
+
+  </div>
+
+  <div class="mole" id="mole2">
+   
+  </div>
+  
+  <div class="mole" id="mole3">
+ 
+  </div>
+ 
+  
+ </body>
+
+</html>
